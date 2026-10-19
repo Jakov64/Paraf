@@ -9,17 +9,22 @@ import java.time.format.DateTimeFormatter;
 @Getter
 @Setter
 public class HistoryEntry {
-    private LocalDateTime vreme;
-    private String tekst;
+    private LocalDateTime dateTime;
+    private String text;
 
-    private static DateTimeFormatter formatiranoVreme = DateTimeFormatter.ofPattern("HH:mm:ss");
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-    public HistoryEntry(String tekst){
-        HistoryEntry unos = new HistoryEntry(LocalDateTime.now(), tekst);
+    public HistoryEntry(String text){
+        HistoryEntry entry = new HistoryEntry(LocalDateTime.now(), text);
     }
 
-    public HistoryEntry(LocalDateTime vreme, String tekst) {
-        this.vreme = vreme;
-        this.tekst = tekst;
+    public HistoryEntry(LocalDateTime dateTime, String text) {
+        this.dateTime = dateTime;
+        this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + dateTime.format(formatter) + "] " + text;
     }
 }
