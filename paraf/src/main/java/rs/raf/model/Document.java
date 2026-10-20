@@ -4,7 +4,7 @@ public abstract class Document {
     private String name;
     private String content;
 
-    public Document(String name, String content) {
+    public Document(String name) {
         this.name = name;
         this.content = "";
     }
