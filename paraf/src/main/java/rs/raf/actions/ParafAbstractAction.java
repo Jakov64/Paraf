@@ -1,4 +1,6 @@
 package rs.raf.actions;
 
-public abstract class ParafAbstractAction {
+import javax.swing.*;
+
+public abstract class ParafAbstractAction extends AbstractAction {
 }
