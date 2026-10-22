@@ -1,6 +1,6 @@
-package rs.raf.model;
+package rs.raf.model.tree;
 
-public abstract class Document {
+public abstract class Document extends NodeComponent{
     private String name;
     private String content;
 

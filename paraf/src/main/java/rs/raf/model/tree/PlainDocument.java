@@ -1,9 +1,9 @@
-package rs.raf.model;
+package rs.raf.model.tree;
 
 import lombok.Getter;
 import lombok.Setter;
 
-public class PlainDocument extends Document{
+public class PlainDocument extends Document {
 
     @Getter
     @Setter
