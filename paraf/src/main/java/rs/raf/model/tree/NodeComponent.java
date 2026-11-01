@@ -1,4 +1,5 @@
 package rs.raf.model.tree;
 
-public abstract class NodeComponent {
+public interface NodeComponent {
+    String writeHistory();
 }

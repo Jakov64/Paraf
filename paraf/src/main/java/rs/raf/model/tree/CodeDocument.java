@@ -19,6 +19,10 @@ public class CodeDocument extends Document {
         super(name);
     }
 
+    @Override
+    public String writeHistory() {
+        return "";
+    }
 
     @Override
     public boolean lineWrap() {
