@@ -20,11 +20,6 @@ public class CodeDocument extends Document {
     }
 
     @Override
-    public String writeHistory() {
-        return "";
-    }
-
-    @Override
     public boolean lineWrap() {
         return false;
     }

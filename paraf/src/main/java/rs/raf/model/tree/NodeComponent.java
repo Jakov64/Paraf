@@ -1,5 +1,12 @@
 package rs.raf.model.tree;
 
-public interface NodeComponent {
-    String writeHistory();
+import lombok.Getter;
+
+@Getter
+abstract class NodeComponent {
+    private String name;
+
+    public NodeComponent(String name){
+        this.name = name;
+    }
 }

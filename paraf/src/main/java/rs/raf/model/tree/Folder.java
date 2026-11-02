@@ -1,13 +1,20 @@
 package rs.raf.model.tree;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Folder implements NodeComponent{
-    private List<NodeComponent> Children = new ArrayList<>();
 
-    @Override
-    public String writeHistory() {
-        return "";
+public class Folder extends NodeComponent{
+    @Getter
+    @Setter
+
+    private List<NodeComponent> children;
+
+    public Folder(String name){
+        super(name);
+        children = new ArrayList<>();
     }
 }

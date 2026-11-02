@@ -16,12 +16,6 @@ public class PlainDocument extends Document {
     //kada budemo pravili Action (controller klasu) ovo cemo da koristimo otp ovako
     //Document document = new PlainDocument(PlainDocument.nextDefaultName()); wohoo
 
-
-    @Override
-    public String writeHistory() {
-        return "";
-    }
-
     public PlainDocument(String name) {
         super(name);
     }
