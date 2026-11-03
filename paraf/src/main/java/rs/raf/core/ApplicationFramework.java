@@ -2,8 +2,15 @@ package rs.raf.core;
 
 
 import rs.raf.gui.swing.MainFrame;
+import rs.raf.model.tree.Folder;
 
 public class ApplicationFramework {
+
+    private Folder project;
+
+    public ApplicationFramework() {
+        project = new Folder("Project");
+    }
 
     private static ApplicationFramework instance;
 

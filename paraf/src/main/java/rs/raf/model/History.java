@@ -8,8 +8,6 @@ import rs.raf.observer.ISubscriber;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class History implements IPublisher {
 
     @Getter
