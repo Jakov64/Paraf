@@ -2,6 +2,7 @@ package rs.raf.gui.tree;
 
 import lombok.Getter;
 import lombok.Setter;
+import rs.raf.core.ApplicationFramework;
 import rs.raf.model.tree.Folder;
 
 import javax.swing.event.TreeModelEvent;
@@ -15,15 +16,13 @@ public class JTreeModel implements TreeModel {
 
     @Getter
     @Setter
-    private Folder root;
     private List<TreeModelListener> listeners = new ArrayList<>();
-    public JTreeModel(Folder root) {
-        this.root = root;
+    public JTreeModel() {
     }
 
     @Override
     public Object getRoot() {
-        return root;
+        return ApplicationFramework.getInstance().getProject();
     }
 
     @Override
@@ -58,9 +57,9 @@ public class JTreeModel implements TreeModel {
     public int getIndexOfChild(Object parent, Object child) {
         if(parent instanceof Folder){ //mozda dodati && child instanceof NodeComponent da ne bi doslo do greske ako neko prosledi nesto random?
             Folder folder = (Folder) parent;
-            folder.getChildren().indexOf(child);
+            return folder.getChildren().indexOf(child);
         }
-        return 0;
+        return -1; //cvor ne pripada roditelju
     }
 
     @Override
@@ -74,7 +73,7 @@ public class JTreeModel implements TreeModel {
     }
 
     public void reload() {
-        TreeModelEvent event = new TreeModelEvent(this, new Object[]{root});
+        TreeModelEvent event = new TreeModelEvent(this, new Object[]{ApplicationFramework.getInstance().getProject()});
         for (TreeModelListener listener : listeners) {
             listener.treeStructureChanged(event);
         }

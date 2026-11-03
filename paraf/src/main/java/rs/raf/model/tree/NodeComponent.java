@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-abstract class NodeComponent {
+public abstract class NodeComponent {
     private String name;
     private NodeComponent parent;
 
