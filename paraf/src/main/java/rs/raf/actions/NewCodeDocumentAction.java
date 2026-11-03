@@ -12,4 +12,7 @@ public class NewCodeDocumentAction extends ParafAbstractAction{
     public boolean accept(Object sender) {
         return super.accept(sender);
     }
+
+
+
 }
