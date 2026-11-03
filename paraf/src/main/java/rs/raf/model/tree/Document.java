@@ -3,8 +3,8 @@ package rs.raf.model.tree;
 public abstract class Document extends NodeComponent {
     private String content;
 
-    public Document(String name) {
-        super(name);
+    public Document(String name, NodeComponent parent) {
+        super(name, parent);
         this.content = "";
     }
 

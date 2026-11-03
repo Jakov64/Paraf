@@ -15,8 +15,8 @@ public class CodeDocument extends Document {
         return "Code" + counter;
     }
 
-    public CodeDocument(String name) {
-        super(name);
+    public CodeDocument(String name, NodeComponent parent) {
+        super(name, parent);
     }
 
     @Override
