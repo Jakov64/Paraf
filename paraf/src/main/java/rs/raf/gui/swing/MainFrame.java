@@ -2,6 +2,8 @@ package rs.raf.gui.swing;
 
 import lombok.Getter;
 import lombok.Setter;
+import rs.raf.core.ApplicationFramework;
+import rs.raf.model.tree.Folder;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
