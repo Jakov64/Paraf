@@ -7,8 +7,15 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public abstract class ParafAbstractAction extends AbstractAction{
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
+    protected ParafAbstractAction(String name) {
+        super(name); // postavlja tekst akcije u meniju i toolbaru
     }
+
+    @Override
+    public final void actionPerformed(ActionEvent event) {
+        perform(event);
+    }
+
+    protected abstract void perform(ActionEvent event);
 }

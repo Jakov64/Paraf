@@ -1,10 +1,8 @@
 package rs.raf.actions;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
 public class ActionManager {
     private static ActionManager instance;
 

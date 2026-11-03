@@ -11,11 +11,10 @@ public class HistoryPanel extends JPanel implements ISubscriber {
 
     DefaultListModel<String> model = new DefaultListModel<>();
 
-    public HistoryPanel(History history) {
+    public HistoryPanel() {
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(200, 0));
         add(new JScrollPane(new JList<>(model)), BorderLayout.CENTER);
-        history.addSubscriber(this);
     }
 
     @Override
