@@ -18,4 +18,8 @@ public abstract class NodeComponent {
         this.name = name;
         this.parent = parent;
     }
+
+    public void createChild(NodeComponent parent){
+        this.parent = parent;
+    }
 }

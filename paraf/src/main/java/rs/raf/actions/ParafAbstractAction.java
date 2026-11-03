@@ -1,6 +1,14 @@
 package rs.raf.actions;
 
-import javax.swing.*;
+import rs.raf.observer.IPublisher;
+import rs.raf.observer.ISubscriber;
 
-public abstract class ParafAbstractAction extends AbstractAction {
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
+public abstract class ParafAbstractAction extends AbstractAction{
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
 }

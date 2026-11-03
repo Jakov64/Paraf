@@ -4,18 +4,11 @@ import lombok.Getter;
 import lombok.Setter;
 import rs.raf.core.ApplicationFramework;
 import rs.raf.model.tree.Folder;
+import rs.raf.actions.ActionManager;
+import rs.raf.model.History;
 
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Toolkit;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class MainFrame extends JFrame {
@@ -29,7 +22,7 @@ public class MainFrame extends JFrame {
     private static final int TEXT_MARGIN = 8;
     private static final int FONT_SIZE = 14;
 
-    private final JTextArea textArea;
+    //private final JTextArea textArea;
 
     private static MainFrame instance;
 
@@ -49,28 +42,43 @@ public class MainFrame extends JFrame {
 
         setJMenuBar(createMenuBar());
 
-        textArea = new JTextArea();
-        textArea.setLineWrap(true);
-        textArea.setWrapStyleWord(true);
-        textArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, FONT_SIZE));
-        textArea.setBorder(BorderFactory.createEmptyBorder(TEXT_MARGIN, TEXT_MARGIN, TEXT_MARGIN, TEXT_MARGIN));
+        setJMenuBar(createMenuBar());
+        add(createCenteredToolBar(), BorderLayout.NORTH);
+        add( new JTree(), BorderLayout.WEST);
 
-        add(new JScrollPane(textArea), BorderLayout.CENTER);
+        add(new HistoryPanel(new History()), BorderLayout.EAST);
+
+        add(new JTabbedPane(), BorderLayout.CENTER);
     }
 
-    public JTextArea getTextArea() {
-        return textArea;
+    private JPanel createCenteredToolBar() {
+        ActionManager actions = ActionManager.getInstance();
+
+        JToolBar toolBar = new JToolBar();
+        toolBar.setFloatable(false);
+        toolBar.setRollover(true);
+
+        toolBar.add(actions.getNewFolderAction());
+        toolBar.add(actions.getNewPlainDocumentAction());
+        toolBar.add(actions.getNewCodeDocumentAction());
+        toolBar.addSeparator();
+        toolBar.add(actions.getExitAction());
+
+        JPanel toolbarPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        toolbarPanel.add(toolBar);
+
+        return toolbarPanel;
     }
 
     private JMenuBar createMenuBar() {
         JMenuBar menuBar = new JMenuBar();
+        JMenu fileMenu = new JMenu("File");
 
-        JMenu fileMenu = new JMenu(FILE_MENU_TITLE);
-        fileMenu.setMnemonic(KeyEvent.VK_F);
-
-        JMenuItem exitItem = new JMenuItem(EXIT_ITEM_TITLE);
-        exitItem.addActionListener(event -> System.exit(0));
-        fileMenu.add(exitItem);
+        fileMenu.add(new JMenuItem(ActionManager.getInstance().getNewFolderAction()));
+        fileMenu.add(new JMenuItem(ActionManager.getInstance().getNewPlainDocumentAction()));
+        fileMenu.add(new JMenuItem(ActionManager.getInstance().getNewCodeDocumentAction()));
+        fileMenu.addSeparator();
+        fileMenu.add(new JMenuItem(ActionManager.getInstance().getExitAction()));
 
         menuBar.add(fileMenu);
         return menuBar;

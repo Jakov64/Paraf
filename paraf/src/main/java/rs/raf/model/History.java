@@ -30,13 +30,6 @@ public class History implements IPublisher {
     }
 
     @Override
-    public void removeSubscriber(ISubscriber sub) {
-        if(subscribers.contains(sub)){
-            subscribers.remove(sub);
-        }
-    }
-
-    @Override
     public void notifySubscribers(Object notification) {
         for (ISubscriber sub : subscribers) {
             sub.update(notification);
