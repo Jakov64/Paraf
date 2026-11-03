@@ -8,8 +8,7 @@ public class ApplicationFramework {
     private static ApplicationFramework instance;
 
     public void initialize() {
-        MainFrame mainFrame = MainFrame.getInstance();
-        mainFrame.setVisible(true);
+        MainFrame.getInstance().setVisible(true);
     }
 
     public static ApplicationFramework getInstance(){
