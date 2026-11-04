@@ -13,8 +13,13 @@ public class History implements IPublisher {
     @Getter
     @Setter
 
-    private List<HistoryEntry> entries = new ArrayList<>();
-    private List<ISubscriber> subscribers = new ArrayList<>();
+    private List<HistoryEntry> entries;
+    private List<ISubscriber> subscribers;
+
+    public History() {
+        this.entries = new ArrayList<>();
+        this.subscribers = new ArrayList<>();
+    }
 
     public void addEntry(String text){
         HistoryEntry entry = new HistoryEntry(text);

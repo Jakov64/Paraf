@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import rs.raf.core.ApplicationFramework;
 import rs.raf.model.tree.Folder;
-import rs.raf.actions.ActionManager;
+import rs.raf.controller.actions.ActionManager;
 import rs.raf.model.History;
 
 import javax.swing.*;
@@ -21,6 +21,8 @@ public class MainFrame extends JFrame {
     private static final String EXIT_ITEM_TITLE = "Exit";
     private static final int TEXT_MARGIN = 8;
     private static final int FONT_SIZE = 14;
+
+    private static HistoryPanel historyPanel;
 
     //private final JTextArea textArea;
 
@@ -46,7 +48,9 @@ public class MainFrame extends JFrame {
         add(createCenteredToolBar(), BorderLayout.NORTH);
         add( new JTree(), BorderLayout.WEST);
 
-        add(new HistoryPanel(new History()), BorderLayout.EAST);
+        historyPanel = new HistoryPanel();
+        ApplicationFramework.getInstance().getHistory().addSubscriber(historyPanel);
+        add(historyPanel, BorderLayout.EAST);
 
         add(new JTabbedPane(), BorderLayout.CENTER);
     }
