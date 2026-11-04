@@ -1,7 +1,6 @@
-package rs.raf.actions;
+package rs.raf.controller.actions;
 
 import rs.raf.core.ApplicationFramework;
-import rs.raf.gui.swing.MainFrame;
 import rs.raf.model.tree.CodeDocument;
 import rs.raf.model.tree.Document;
 

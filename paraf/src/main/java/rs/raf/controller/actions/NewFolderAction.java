@@ -1,7 +1,6 @@
-package rs.raf.actions;
+package rs.raf.controller.actions;
 
 import rs.raf.core.ApplicationFramework;
-import rs.raf.model.HistoryEntry;
 import rs.raf.model.tree.CodeDocument;
 import rs.raf.model.tree.Folder;
 
@@ -15,7 +14,7 @@ public class NewFolderAction extends ParafAbstractAction{
     @Override
     protected void perform(ActionEvent event) {
 
-        Folder folder = new Folder(CodeDocument.nextName());
+        Folder folder = new Folder("Ime Foldera");
         ApplicationFramework.getInstance().getHistory().addEntry(folder.getName());
         //System.out.println("Izvrseno"); Izvsrsava se => treba lepo da povezem History i History panel i da proverim da li slanje HistoryEntry
         //objekta narusava mvc

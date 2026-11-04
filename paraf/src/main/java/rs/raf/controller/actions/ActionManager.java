@@ -1,4 +1,4 @@
-package rs.raf.actions;
+package rs.raf.controller.actions;
 
 import lombok.Getter;
 

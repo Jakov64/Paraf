@@ -8,23 +8,19 @@ import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
-public class HistoryEntry {
+public class HistoryEntry { /// Moze da bude apstraktna klasa, a da podklase samo menjaju toString metodu
     private LocalDateTime dateTime;
     private String text;
 
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     public HistoryEntry(String text){
-        HistoryEntry entry = new HistoryEntry(LocalDateTime.now(), text);
-    }
-
-    public HistoryEntry(LocalDateTime dateTime, String text) {
-        this.dateTime = dateTime;
+        this.dateTime = LocalDateTime.now();
         this.text = text;
     }
 
     @Override
     public String toString() {
-        return "[" + dateTime.format(formatter) + "] " + text;
+        return "[" + dateTime.format(formatter) + "] Created \"" + text + "\"";
     }
 }

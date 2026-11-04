@@ -1,8 +1,9 @@
-package rs.raf.actions;
+package rs.raf.controller.actions;
 
-import rs.raf.model.tree.CodeDocument;
+import rs.raf.gui.swing.MainFrame;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowEvent;
 
 public class ExitAction extends ParafAbstractAction{
     public ExitAction() {
@@ -12,6 +13,7 @@ public class ExitAction extends ParafAbstractAction{
     @Override
     protected void perform(ActionEvent event) {
 
+        MainFrame.getInstance().dispatchEvent(new WindowEvent(MainFrame.getInstance(),WindowEvent.WINDOW_CLOSING));
         //CodeDocument document = new CodeDocument(CodeDocument.nextName(), null); treba Exit logika
 
 

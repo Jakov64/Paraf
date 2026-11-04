@@ -12,7 +12,7 @@ public class ApplicationFramework {
 
     private static ApplicationFramework instance;
 
-    private History history;
+    private final History history;
 
     public void initialize() {
         MainFrame.getInstance().setVisible(true);

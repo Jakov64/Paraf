@@ -1,7 +1,4 @@
-package rs.raf.actions;
-
-import rs.raf.observer.IPublisher;
-import rs.raf.observer.ISubscriber;
+package rs.raf.controller.actions;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

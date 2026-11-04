@@ -2,17 +2,15 @@ package rs.raf.gui.swing;
 
 import lombok.Getter;
 import lombok.Setter;
-import rs.raf.actions.ActionManager;
-import rs.raf.model.History;
+import rs.raf.controller.actions.ActionManager;
+import rs.raf.core.ApplicationFramework;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public class MainFrame extends JFrame {
 
     @Getter
-    @Setter
     public static final String TITLE = "Paraf";
 
     private static final String FILE_MENU_TITLE = "File";
@@ -47,6 +45,7 @@ public class MainFrame extends JFrame {
         add( new JTree(), BorderLayout.WEST);
 
         historyPanel = new HistoryPanel();
+        ApplicationFramework.getInstance().getHistory().addSubscriber(historyPanel);
         add(historyPanel, BorderLayout.EAST);
 
         add(new JTabbedPane(), BorderLayout.CENTER);
