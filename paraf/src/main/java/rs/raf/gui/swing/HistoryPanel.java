@@ -1,6 +1,5 @@
 package rs.raf.gui.swing;
 
-import rs.raf.model.History;
 import rs.raf.model.HistoryEntry;
 import rs.raf.observer.ISubscriber;
 

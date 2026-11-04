@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import rs.raf.gui.swing.MainFrame;
 import rs.raf.gui.tree.JTreeModel;
-import rs.raf.model.tree.Folder;
 import rs.raf.model.History;
 
 public class ApplicationFramework {

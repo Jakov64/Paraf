@@ -3,14 +3,14 @@ package rs.raf.gui.swing;
 import lombok.Getter;
 import lombok.Setter;
 import rs.raf.core.ApplicationFramework;
-import rs.raf.model.tree.Folder;
 import rs.raf.controller.actions.ActionManager;
-import rs.raf.model.History;
+import rs.raf.gui.tab.DocumentTabManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
+@Getter
+@Setter
 public class MainFrame extends JFrame {
 
 
@@ -21,8 +21,9 @@ public class MainFrame extends JFrame {
     private static final int TEXT_MARGIN = 8;
     private static final int FONT_SIZE = 14;
 
-    @Getter
-    private static HistoryPanel historyPanel;
+    private final HistoryPanel historyPanel;
+    private final JTabbedPane tabbedPane;
+    private final DocumentTabManager documentTabManager;
 
     //private final JTextArea textArea;
 
@@ -52,7 +53,9 @@ public class MainFrame extends JFrame {
         ApplicationFramework.getInstance().getHistory().addSubscriber(historyPanel);
         add(historyPanel, BorderLayout.EAST);
 
-        add(new JTabbedPane(), BorderLayout.CENTER);
+        tabbedPane = new JTabbedPane();
+        add(tabbedPane, BorderLayout.CENTER);
+        documentTabManager = new DocumentTabManager(tabbedPane);
     }
 
     private JPanel createCenteredToolBar() {
