@@ -8,9 +8,9 @@ import java.util.List;
 
 
 public class Folder extends NodeComponent {
+
     @Getter
     @Setter
-
     private List<NodeComponent> children;
 
     public Folder(String name){

@@ -13,8 +13,7 @@ import java.awt.event.KeyEvent;
 
 public class MainFrame extends JFrame {
 
-    @Getter
-    @Setter
+
     public static final String TITLE = "Paraf";
 
     private static final String FILE_MENU_TITLE = "File";
@@ -22,6 +21,7 @@ public class MainFrame extends JFrame {
     private static final int TEXT_MARGIN = 8;
     private static final int FONT_SIZE = 14;
 
+    @Getter
     private static HistoryPanel historyPanel;
 
     //private final JTextArea textArea;

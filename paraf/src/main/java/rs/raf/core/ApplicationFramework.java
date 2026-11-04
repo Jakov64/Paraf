@@ -13,6 +13,7 @@ public class ApplicationFramework {
     @Setter
     private JTreeModel project;
 
+    @Getter
     private final History history;
 
     public ApplicationFramework() {

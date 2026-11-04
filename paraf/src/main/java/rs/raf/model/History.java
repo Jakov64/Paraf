@@ -8,10 +8,9 @@ import rs.raf.observer.ISubscriber;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class History implements IPublisher {
-
-    @Getter
-    @Setter
 
     private List<HistoryEntry> entries;
     private List<ISubscriber> subscribers;

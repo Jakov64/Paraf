@@ -6,8 +6,6 @@ import lombok.Setter;
 public class CodeDocument extends Document {
 
     @Getter
-    @Setter
-
     private static int counter = 0;
 
     public static String nextName(){
