@@ -31,6 +31,8 @@ public class NewCodeDocumentAction extends ParafAbstractAction {
 
         MainFrame.getInstance().getTreeView().getJTreeModel().reload();
         MainFrame.getInstance().getDocumentTabManager().openOrSelect(document);
+
         ApplicationFramework.getInstance().getHistory().addEntry("Created \"" + document.getName() + "\"");
+
     }
 }
