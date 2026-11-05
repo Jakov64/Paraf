@@ -5,12 +5,14 @@ import lombok.Setter;
 import rs.raf.core.ApplicationFramework;
 import rs.raf.controller.actions.ActionManager;
 import rs.raf.gui.tab.DocumentTabManager;
+import rs.raf.gui.tree.JTreeView;
 
 import javax.swing.*;
 import java.awt.*;
 
 @Getter
 @Setter
+
 public class MainFrame extends JFrame {
 
 
@@ -24,6 +26,7 @@ public class MainFrame extends JFrame {
     private final HistoryPanel historyPanel;
     private final JTabbedPane tabbedPane;
     private final DocumentTabManager documentTabManager;
+    private JTreeView treeView;
 
     //private final JTextArea textArea;
 
@@ -37,6 +40,7 @@ public class MainFrame extends JFrame {
     }
 
     private MainFrame() {
+        this.treeView = new JTreeView(new BorderLayout());
         setTitle(TITLE);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize.width / 2, screenSize.height / 2);
@@ -47,7 +51,7 @@ public class MainFrame extends JFrame {
 
         setJMenuBar(createMenuBar());
         add(createCenteredToolBar(), BorderLayout.NORTH);
-        add( new JTree(), BorderLayout.WEST);
+        add( treeView, BorderLayout.WEST);
 
         historyPanel = new HistoryPanel();
         ApplicationFramework.getInstance().getHistory().addSubscriber(historyPanel);

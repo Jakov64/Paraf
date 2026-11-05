@@ -1,10 +1,15 @@
 package rs.raf.gui.tab;
 
+import lombok.Getter;
+import lombok.Setter;
 import rs.raf.model.tree.Document;
 
 import javax.swing.*;
 import java.util.IdentityHashMap;
 import java.util.Map;
+
+@Getter
+@Setter
 
 public class DocumentTabManager {
     private final JTabbedPane tabbedPane;

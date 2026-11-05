@@ -12,10 +12,10 @@ import javax.swing.tree.TreePath;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class JTreeModel implements TreeModel {
 
-    @Getter
-    @Setter
     private List<TreeModelListener> listeners = new ArrayList<>();
     public JTreeModel() {
     }

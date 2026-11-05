@@ -6,17 +6,17 @@ import lombok.Setter;
 import rs.raf.gui.swing.MainFrame;
 import rs.raf.gui.tree.JTreeModel;
 import rs.raf.model.History;
+import rs.raf.model.tree.Folder;
 
+@Getter
+@Setter
 public class ApplicationFramework {
-    @Getter
-    @Setter
-    private JTreeModel project;
 
-    @Getter
+    private Folder project;
     private final History history;
 
-    public ApplicationFramework() {
-        project = new JTreeModel();
+    private ApplicationFramework() {
+        project = new Folder("Project");
         history = new History();
     }
 

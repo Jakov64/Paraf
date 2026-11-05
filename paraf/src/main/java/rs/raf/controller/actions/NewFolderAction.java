@@ -1,26 +1,39 @@
 package rs.raf.controller.actions;
 
 import rs.raf.core.ApplicationFramework;
-import rs.raf.model.tree.CodeDocument;
+import rs.raf.gui.swing.MainFrame;
+import rs.raf.model.tree.Document;
 import rs.raf.model.tree.Folder;
+import rs.raf.model.tree.NodeComponent;
 
 import java.awt.event.ActionEvent;
 
-public class NewFolderAction extends ParafAbstractAction{
+public class NewFolderAction extends ParafAbstractAction {
+
     public NewFolderAction() {
         super("New Folder");
     }
 
     @Override
     protected void perform(ActionEvent event) {
+        Folder folder = new Folder(Folder.nextName());
+        NodeComponent selected = MainFrame.getInstance().getTreeView().getSelectedNode();
+        Folder targetFolder;
 
-        Folder folder = new Folder("Ime Foldera");
-        ApplicationFramework.getInstance().getHistory().addEntry(folder.getName());
-        //System.out.println("Izvrseno"); Izvsrsava se => treba lepo da povezem History i History panel i da proverim da li slanje HistoryEntry
-        //objekta narusava mvc
+        if (selected instanceof Folder) {
+            targetFolder = (Folder) selected;
+        } else if (selected instanceof Document) {
+            targetFolder = (Folder) selected.getParent();
+        } else {
+            targetFolder = ApplicationFramework.getInstance().getProject();
+        }
 
+        if (targetFolder == null) {
+            targetFolder = ApplicationFramework.getInstance().getProject();
+        }
 
-        // Ovde bi išao poziv za otvaranje dokumenta u editoru,
-        // kada MainFrame bude imao takvu metodu.
+        targetFolder.addChild(folder);
+        MainFrame.getInstance().getTreeView().getJTreeModel().reload();
+        ApplicationFramework.getInstance().getHistory().addEntry("Created folder \"" + folder.getName() + "\"");
     }
 }

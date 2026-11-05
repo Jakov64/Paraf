@@ -2,25 +2,41 @@ package rs.raf.controller.actions;
 
 import rs.raf.core.ApplicationFramework;
 import rs.raf.gui.swing.MainFrame;
-import rs.raf.gui.tab.DocumentTabPanel;
 import rs.raf.model.tree.Document;
+import rs.raf.model.tree.Folder;
+import rs.raf.model.tree.NodeComponent;
 import rs.raf.model.tree.PlainDocument;
 
 import java.awt.event.ActionEvent;
 
-public class NewPlainDocumentAction extends ParafAbstractAction{
+public class NewPlainDocumentAction extends ParafAbstractAction {
+
     public NewPlainDocumentAction() {
         super("New Plain Document");
     }
 
     @Override
     protected void perform(ActionEvent event) {
-
         Document document = new PlainDocument(PlainDocument.nextName(), null);
-        ApplicationFramework.getInstance().getHistory().addEntry(document.getName());
-        MainFrame.getInstance().getDocumentTabManager().openOrSelect(document);
 
-        // Ovde bi išao poziv za otvaranje dokumenta u editoru,
-        // kada MainFrame bude imao takvu metodu.
+        NodeComponent selected = MainFrame.getInstance().getTreeView().getSelectedNode();
+        Folder targetFolder;
+
+        if (selected instanceof Folder) {
+            targetFolder = (Folder) selected;
+        } else if (selected instanceof Document) {
+            targetFolder = (Folder) selected.getParent();
+        } else {
+            targetFolder = ApplicationFramework.getInstance().getProject();
+        }
+
+        if (targetFolder == null) {
+            targetFolder = ApplicationFramework.getInstance().getProject();
+        }
+        targetFolder.addChild(document);
+
+        MainFrame.getInstance().getTreeView().getJTreeModel().reload();
+        MainFrame.getInstance().getDocumentTabManager().openOrSelect(document);
+        ApplicationFramework.getInstance().getHistory().addEntry("Created \"" + document.getName() + "\"");
     }
 }

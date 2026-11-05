@@ -5,6 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+
 public abstract class NodeComponent {
     private String name;
     private NodeComponent parent;
@@ -21,5 +22,10 @@ public abstract class NodeComponent {
 
     public void createChild(NodeComponent parent){
         this.parent = parent;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

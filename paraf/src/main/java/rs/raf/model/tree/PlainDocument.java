@@ -12,8 +12,6 @@ public class PlainDocument extends Document {
         counter += 1;
         return "Document" + counter;
     }
-    //kada budemo pravili Action (controller klasu) ovo cemo da koristimo otp ovako
-    //Document document = new PlainDocument(PlainDocument.nextDefaultName()); wohoo
 
     public PlainDocument(String name, NodeComponent parent) {
         super(name, parent);

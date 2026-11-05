@@ -2,7 +2,7 @@ package rs.raf.gui.tree;
 
 import lombok.Getter;
 import lombok.Setter;
-import rs.raf.core.ApplicationFramework;
+import rs.raf.controller.TreeMouseListenerAction;
 import rs.raf.model.tree.NodeComponent;
 
 import javax.swing.*;
@@ -22,6 +22,7 @@ public class JTreeView extends JPanel {
         this.jTree = new JTree(jTreeModel);
         this.jTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
         add(new JScrollPane(jTree),BorderLayout.CENTER);
+        this.jTree.addMouseListener(new TreeMouseListenerAction(this.jTree));
     }
 
     public NodeComponent getSelectedNode() {
