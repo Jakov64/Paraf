@@ -18,7 +18,7 @@ public class NewCodeDocumentAction extends ParafAbstractAction{
         Document document = new CodeDocument(CodeDocument.nextName(), null);
         ApplicationFramework.getInstance().getHistory().addEntry(document.getName());
         MainFrame.getInstance().getDocumentTabManager().openOrSelect(document);
-
+        ApplicationFramework.getInstance().getDocumentModel().addDocument(document);
         // Ovde bi išao poziv za otvaranje dokumenta u editoru,
         // kada MainFrame bude imao takvu metodu.
     }
