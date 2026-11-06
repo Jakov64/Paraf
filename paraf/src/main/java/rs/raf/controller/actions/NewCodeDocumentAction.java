@@ -36,5 +36,6 @@ public class NewCodeDocumentAction extends ParafAbstractAction {
 
         ApplicationFramework.getInstance().getHistory().addEntry( document.getName() );
 
+        ApplicationFramework.getInstance().getHistory().addEntry(new DocumentHistoryEntry(document.getName()));
     }
 }
