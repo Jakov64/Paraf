@@ -22,23 +22,19 @@ public class DocumentTabController implements DocumentListener {
     @Override
     public void insertUpdate(DocumentEvent event) {
         saveTextToModel();
-        System.out.println("Doslo je do izmene");
     }
 
     @Override
     public void removeUpdate(DocumentEvent event) {
         saveTextToModel();
-        System.out.println("Doslo je do izmene");
     }
 
     @Override
     public void changedUpdate(DocumentEvent event) {
         saveTextToModel();
-        System.out.println("Doslo je do izmene");
     }
 
     private void saveTextToModel() {
         document.setContent(panel.getTextArea().getText());
-        System.out.println("Doslo je do izmene");
     }
 }

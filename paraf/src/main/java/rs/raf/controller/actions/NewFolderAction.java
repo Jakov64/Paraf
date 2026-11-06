@@ -34,6 +34,6 @@ public class NewFolderAction extends ParafAbstractAction {
 
         targetFolder.addChild(folder);
         MainFrame.getInstance().getTreeView().getJTreeModel().reload();
-        ApplicationFramework.getInstance().getHistory().addEntry("Created folder \"" + folder.getName() + "\"");
+        ApplicationFramework.getInstance().getHistory().addEntry( folder.getName() );
     }
 }

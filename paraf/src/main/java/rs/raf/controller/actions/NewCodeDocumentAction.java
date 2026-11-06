@@ -1,5 +1,6 @@
 package rs.raf.controller.actions;
 
+import rs.raf.controller.DocumentTabController;
 import rs.raf.core.ApplicationFramework;
 import rs.raf.gui.swing.MainFrame;
 import rs.raf.model.tree.CodeDocument;
@@ -31,8 +32,10 @@ public class NewCodeDocumentAction extends ParafAbstractAction {
 
         MainFrame.getInstance().getTreeView().getJTreeModel().reload();
         MainFrame.getInstance().getDocumentTabManager().openOrSelect(document);
+        ApplicationFramework.getInstance().getHistory().addEntry( document.getName());
+        new DocumentTabController(document, MainFrame.getInstance().getDocumentTabManager().getDocumentTabPanel(document));
 
-        ApplicationFramework.getInstance().getHistory().addEntry("Created \"" + document.getName() + "\"");
+        ApplicationFramework.getInstance().getHistory().addEntry( document.getName() );
 
     }
 }
