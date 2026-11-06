@@ -2,6 +2,7 @@ package rs.raf.controller.actions;
 
 import rs.raf.core.ApplicationFramework;
 import rs.raf.gui.swing.MainFrame;
+import rs.raf.model.DocumentHistoryEntry;
 import rs.raf.model.tree.CodeDocument;
 import rs.raf.model.tree.Document;
 import rs.raf.model.tree.Folder;
@@ -32,7 +33,6 @@ public class NewCodeDocumentAction extends ParafAbstractAction {
         MainFrame.getInstance().getTreeView().getJTreeModel().reload();
         MainFrame.getInstance().getDocumentTabManager().openOrSelect(document);
 
-        ApplicationFramework.getInstance().getHistory().addEntry("Created \"" + document.getName() + "\"");
-
+        ApplicationFramework.getInstance().getHistory().addEntry(new DocumentHistoryEntry(document.getName()));
     }
 }

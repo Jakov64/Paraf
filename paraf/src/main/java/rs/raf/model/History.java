@@ -20,10 +20,11 @@ public class History implements IPublisher {
         this.subscribers = new ArrayList<>();
     }
 
-    public void addEntry(String text){
-        HistoryEntry entry = new HistoryEntry(text);
-        this.entries.add(entry);
-        notifySubscribers(entry);
+    public void addEntry(HistoryEntry histоryEntry){
+        if (histоryEntry != null) {
+            this.entries.add(histоryEntry);
+            notifySubscribers(histоryEntry);
+        }
     }
 
     @Override

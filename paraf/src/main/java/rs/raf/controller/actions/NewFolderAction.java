@@ -2,6 +2,7 @@ package rs.raf.controller.actions;
 
 import rs.raf.core.ApplicationFramework;
 import rs.raf.gui.swing.MainFrame;
+import rs.raf.model.FolderHistoryEntry;
 import rs.raf.model.tree.Document;
 import rs.raf.model.tree.Folder;
 import rs.raf.model.tree.NodeComponent;
@@ -34,6 +35,5 @@ public class NewFolderAction extends ParafAbstractAction {
 
         targetFolder.addChild(folder);
         MainFrame.getInstance().getTreeView().getJTreeModel().reload();
-        ApplicationFramework.getInstance().getHistory().addEntry("Created folder \"" + folder.getName() + "\"");
-    }
+        ApplicationFramework.getInstance().getHistory().addEntry(new FolderHistoryEntry(folder.getName()));    }
 }
