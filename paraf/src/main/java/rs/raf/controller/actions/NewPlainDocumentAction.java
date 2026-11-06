@@ -1,5 +1,6 @@
 package rs.raf.controller.actions;
 
+import rs.raf.controller.DocumentTabController;
 import rs.raf.core.ApplicationFramework;
 import rs.raf.gui.swing.MainFrame;
 import rs.raf.model.DocumentHistoryEntry;
@@ -38,5 +39,8 @@ public class NewPlainDocumentAction extends ParafAbstractAction {
 
         MainFrame.getInstance().getTreeView().getJTreeModel().reload();
         MainFrame.getInstance().getDocumentTabManager().openOrSelect(document);
-        ApplicationFramework.getInstance().getHistory().addEntry(new DocumentHistoryEntry(document.getName()));    }
+
+        ApplicationFramework.getInstance().getHistory().addEntry(new DocumentHistoryEntry(document.getName()));
+        new DocumentTabController(document, MainFrame.getInstance().getDocumentTabManager().getDocumentTabPanel(document));
+    }
 }
