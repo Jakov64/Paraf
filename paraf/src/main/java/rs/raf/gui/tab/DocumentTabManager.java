@@ -2,6 +2,7 @@ package rs.raf.gui.tab;
 
 import lombok.Getter;
 import lombok.Setter;
+import rs.raf.controller.DocumentTabController;
 import rs.raf.model.tree.Document;
 
 import javax.swing.*;
@@ -35,6 +36,7 @@ public class DocumentTabManager {
             tabbedPane.setTabComponentAt(index, createTabHeader(document, panel));
         }
 
+        new DocumentTabController(document, panel);
         tabbedPane.setSelectedComponent(panel);
     }
 

@@ -33,7 +33,6 @@ public class NewCodeDocumentAction extends ParafAbstractAction {
         MainFrame.getInstance().getTreeView().getJTreeModel().reload();
         MainFrame.getInstance().getDocumentTabManager().openOrSelect(document);
         ApplicationFramework.getInstance().getHistory().addEntry( document.getName());
-        new DocumentTabController(document, MainFrame.getInstance().getDocumentTabManager().getDocumentTabPanel(document));
 
         ApplicationFramework.getInstance().getHistory().addEntry( document.getName() );
 
