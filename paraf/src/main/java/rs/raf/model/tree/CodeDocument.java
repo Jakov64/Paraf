@@ -18,6 +18,12 @@ public class CodeDocument extends Document {
     }
 
     @Override
+    public Document duplicate() {
+        Document document  = new PlainDocument(this.getName(), this.getParent());
+        return document;
+    }
+
+    @Override
     public boolean lineWrap() {
         return false;
     }

@@ -13,6 +13,8 @@ public abstract class Document extends NodeComponent {
         this.content = "";
     }
 
+    public abstract Document duplicate();
+
     public abstract boolean lineWrap(); //da li se tekst prelama
     public abstract boolean monospace(); //fiksna sirina - vazi za CodeDocument
 

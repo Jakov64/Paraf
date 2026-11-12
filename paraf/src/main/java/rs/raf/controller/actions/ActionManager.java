@@ -10,12 +10,14 @@ public class ActionManager {
     private ExitAction exitAction;
     private NewPlainDocumentAction newPlainDocumentAction;
     private NewFolderAction newFolderAction;
+    private DuplicateAction duplicateAction;
 
     private ActionManager(){
         newCodeDocumentAction = new NewCodeDocumentAction();
         exitAction = new ExitAction();
         newPlainDocumentAction = new NewPlainDocumentAction();
         newFolderAction = new NewFolderAction();
+        duplicateAction = new DuplicateAction();
     }
 
     public static ActionManager getInstance() {

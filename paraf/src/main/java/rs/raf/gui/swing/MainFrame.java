@@ -73,6 +73,7 @@ public class MainFrame extends JFrame implements ISubscriber {
         toolBar.add(ActionManager.getInstance().getNewFolderAction());
         toolBar.add(ActionManager.getInstance().getNewPlainDocumentAction());
         toolBar.add(ActionManager.getInstance().getNewCodeDocumentAction());
+        toolBar.add(ActionManager.getInstance().getDuplicateAction());
         toolBar.addSeparator();
         toolBar.add(ActionManager.getInstance().getExitAction());
 
@@ -93,6 +94,8 @@ public class MainFrame extends JFrame implements ISubscriber {
         fileMenu.add(new JMenuItem(ActionManager.getInstance().getNewFolderAction()));
         fileMenu.add(new JMenuItem(ActionManager.getInstance().getNewPlainDocumentAction()));
         fileMenu.add(new JMenuItem(ActionManager.getInstance().getNewCodeDocumentAction()));
+        JMenuItem duplicate = new JMenuItem(ActionManager.getInstance().getDuplicateAction()); // mogla bi da se uradi neka logika za disable
+        fileMenu.add(duplicate);
         fileMenu.addSeparator();
         fileMenu.add(new JMenuItem(ActionManager.getInstance().getExitAction()));
 
