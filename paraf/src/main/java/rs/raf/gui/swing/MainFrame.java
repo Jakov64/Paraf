@@ -6,6 +6,7 @@ import rs.raf.core.ApplicationFramework;
 import rs.raf.controller.actions.ActionManager;
 import rs.raf.gui.tab.DocumentTabManager;
 import rs.raf.gui.tree.JTreeView;
+import rs.raf.gui.tree.MyTreeCellRenderer;
 import rs.raf.observer.ISubscriber;
 
 import javax.swing.*;
@@ -62,6 +63,8 @@ public class MainFrame extends JFrame implements ISubscriber {
         tabbedPane = new JTabbedPane();
         add(tabbedPane, BorderLayout.CENTER);
         documentTabManager = new DocumentTabManager(tabbedPane);
+
+        treeView.getJTree().setCellRenderer(new MyTreeCellRenderer());
     }
 
     private JPanel createCenteredToolBar() {
@@ -101,6 +104,10 @@ public class MainFrame extends JFrame implements ISubscriber {
 
         menuBar.add(fileMenu);
         return menuBar;
+    }
+
+    public void updeteDocumentCountView(String s){
+        documentCountInFolder.setText(s);
     }
 
     @Override

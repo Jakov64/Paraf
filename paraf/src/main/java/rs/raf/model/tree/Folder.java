@@ -27,4 +27,17 @@ public class Folder extends NodeComponent {
         counter += 1;
         return "Folder" + counter;
     }
+
+    public int getDocumentCount(){
+        int i = 0;
+        for(NodeComponent nc : children){
+            if(nc instanceof Folder){
+                i += ((Folder) nc).getDocumentCount();
+            }
+            else{
+                i++;
+            }
+        }
+        return i;
+    }
 }

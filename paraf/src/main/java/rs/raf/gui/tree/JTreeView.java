@@ -3,6 +3,7 @@ package rs.raf.gui.tree;
 import lombok.Getter;
 import lombok.Setter;
 import rs.raf.controller.TreeMouseListenerAction;
+import rs.raf.model.tree.Folder;
 import rs.raf.model.tree.NodeComponent;
 
 import javax.swing.*;
