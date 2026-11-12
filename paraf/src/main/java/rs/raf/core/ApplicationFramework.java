@@ -3,6 +3,7 @@ package rs.raf.core;
 import lombok.Getter;
 import lombok.Setter;
 import rs.raf.gui.swing.MainFrame;
+import rs.raf.model.DocumentModel;
 import rs.raf.model.History;
 import rs.raf.model.tree.Folder;
 
@@ -14,10 +15,12 @@ public class ApplicationFramework {
 
     private Folder project;
     private History history;
+    private DocumentModel documentModel;
 
     private ApplicationFramework() {
         this.project = new Folder("Project");
         this.history = new History();
+        this.documentModel = new DocumentModel();
     }
 
     public static ApplicationFramework getInstance() {
@@ -29,5 +32,6 @@ public class ApplicationFramework {
 
     public void initialize() {
         MainFrame.getInstance().setVisible(true);
+        documentModel.addSubscriber(MainFrame.getInstance());
     }
 }

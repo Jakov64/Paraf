@@ -39,7 +39,7 @@ public class NewPlainDocumentAction extends ParafAbstractAction {
 
         MainFrame.getInstance().getTreeView().getJTreeModel().reload();
         MainFrame.getInstance().getDocumentTabManager().openOrSelect(document);
-        ApplicationFramework.getInstance().getHistory().addEntry( document.getName());
+        ApplicationFramework.getInstance().getDocumentModel().addDocument(document);
 
         ApplicationFramework.getInstance().getHistory().addEntry(new DocumentHistoryEntry(document.getName()));
     }

@@ -6,6 +6,7 @@ import rs.raf.core.ApplicationFramework;
 import rs.raf.controller.actions.ActionManager;
 import rs.raf.gui.tab.DocumentTabManager;
 import rs.raf.gui.tree.JTreeView;
+import rs.raf.observer.ISubscriber;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ import java.awt.*;
 @Getter
 @Setter
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements ISubscriber {
 
 
     public static final String TITLE = "Paraf";
@@ -26,7 +27,8 @@ public class MainFrame extends JFrame {
     private final HistoryPanel historyPanel;
     private final JTabbedPane tabbedPane;
     private final DocumentTabManager documentTabManager;
-    private JTreeView treeView;
+    private final JTreeView treeView;
+    private final JTextField documentCountInFolder;
 
     //private final JTextArea textArea;
 
@@ -49,7 +51,7 @@ public class MainFrame extends JFrame {
 
         setJMenuBar(createMenuBar());
 
-        setJMenuBar(createMenuBar());
+        documentCountInFolder = new JTextField();
         add(createCenteredToolBar(), BorderLayout.NORTH);
         add( treeView, BorderLayout.WEST);
 
@@ -63,17 +65,20 @@ public class MainFrame extends JFrame {
     }
 
     private JPanel createCenteredToolBar() {
-        ActionManager actions = ActionManager.getInstance();
 
         JToolBar toolBar = new JToolBar();
         toolBar.setFloatable(false);
         toolBar.setRollover(true);
 
-        toolBar.add(actions.getNewFolderAction());
-        toolBar.add(actions.getNewPlainDocumentAction());
-        toolBar.add(actions.getNewCodeDocumentAction());
+        toolBar.add(ActionManager.getInstance().getNewFolderAction());
+        toolBar.add(ActionManager.getInstance().getNewPlainDocumentAction());
+        toolBar.add(ActionManager.getInstance().getNewCodeDocumentAction());
         toolBar.addSeparator();
-        toolBar.add(actions.getExitAction());
+        toolBar.add(ActionManager.getInstance().getExitAction());
+
+        documentCountInFolder.setText("nista za sad");
+
+        toolBar.add(documentCountInFolder);
 
         JPanel toolbarPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         toolbarPanel.add(toolBar);
@@ -93,5 +98,12 @@ public class MainFrame extends JFrame {
 
         menuBar.add(fileMenu);
         return menuBar;
+    }
+
+    @Override
+    public void update(Object notification) {
+        if(notification instanceof Integer){
+            this.setTitle(TITLE + " document count: " + notification);
+        }
     }
 }
